@@ -64,3 +64,60 @@ backwards compatible.
 
 Note: upgrade guide doesn't contain `tsconfig.json` file.
 
+### Step 2 - Installing Angular
+
+1. Installed following NPM packages:
+
+- `@angular/common`: 6.1.10
+- `@angular/compiler`: 6.1.10
+- `@angular/core`: 6.1.10
+- `@angular/forms`: 6.1.10
+- `@angular/http`: 6.1.10
+- `@angular/platform-browser`: 6.1.10
+- `@angular/platform-browser-dynamic`: 6.1.10
+- `@angular/router`: 6.1.10
+- `@angular/upgrade`: 6.1.10
+- `angular-in-memory-web-api`: 0.6.1
+- `systemjs`: 0.19.40
+- `core-js`: 2.6.12
+- `rxjs`: 6.6.7
+- `zone.js`: 0.8.26
+
+2. Added `systemjs.config.js` file
+  - Copied from [here](https://github.com/angular/quickstart/blob/master/src/systemjs.config.js)
+  - Modified by adding following packages:
+    ```js
+    packages: {
+      app: { defaultExtension: 'js' },
+      'rxjs/ajax': { main: 'index.js', defaultExtension: 'js' },
+      'rxjs/operators': { main: 'index.js', defaultExtension: 'js' },
+      'rxjs/testing': { main: 'index.js', defaultExtension: 'js' },
+      'rxjs/websocket': { main: 'index.js', defaultExtension: 'js' },
+      'rxjs': { main: 'index.js', defaultExtension: 'js' },
+    }
+    ```
+  - Modified by changing `npm:` path to `/node_modules/` (was `node_modules/`)
+  - Modified by changing `app` mapping to `/app` (was `app`)
+  - Added `@angular/upgrade/static` mapping
+
+Source: https://www.jeffryhouser.com/index.cfm/2018/5/16/Using-Angular-RXJS-and-SystemJS
+Source: https://github.com/angular/angular/blob/6.1.10/integration/hello_world__systemjs_umd/src/systemjs.config.js
+
+3. Moved `/app/index.html` to project root and added following tags to the `<head>` element:
+```html
+<head>@angular/upgrade/static
+  <base href="/app/">
+  <!-- Existing tags in between new ones -->
+  <script src="/node_modules/core-js/client/shim.min.js"></script>
+  <script src="/node_modules/zone.js/dist/zone.js"></script>
+  <script src="/node_modules/systemjs/dist/system.src.js"></script>
+  <script src="/systemjs.config.js"></script>
+  <script>
+    System.import('main.js').catch((err) => console.error(err));
+  </script>
+</head>
+```
+
+Note: Upgrade guide says to call `System.import('/app')`. It doesn't work because SystemJS cannot
+find `/app` or `/app/index.js` file.
+
