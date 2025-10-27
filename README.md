@@ -121,3 +121,9 @@ Source: https://github.com/angular/angular/blob/6.1.10/integration/hello_world__
 Note: Upgrade guide says to call `System.import('/app')`. It doesn't work because SystemJS cannot
 find `/app` or `/app/index.js` file.
 
+### Step 3 - Creating the AppModule
+
+1. Renamed `app/app.module.ts` as `app/app.module.ajs.ts` (AngularJS version) and fixed file
+  reference in `index.html`
+2. Added `app/app.module.ts` file (Angular version)
+
