@@ -133,3 +133,11 @@ find `/app` or `/app/index.js` file.
 2. Imported `UpgradeModule` to the `app/app.module.ts`
 3. Removed `ng-app` HTML attribute from the `index.html` file's `<html>` tag
 
+### Step 5 - Upgrading the Phone service
+
+1. Imported `HttpModule` to the `app/app.module.ts`
+2. Upgraded `Phone` service to use Angular's `Http` and have better typings
+3. Marked `Phone` service as a provider to the `app/app.module.ts`
+4. Modified components to use updated service together with RxJS and updated typings
+5. Removed reference to the service file from the `index.html` file
+
