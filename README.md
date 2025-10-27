@@ -127,3 +127,9 @@ find `/app` or `/app/index.js` file.
   reference in `index.html`
 2. Added `app/app.module.ts` file (Angular version)
 
+### Step 4 - Bootstrapping a hybrid PhoneCat
+
+1. Added `app/main.ts` file
+2. Imported `UpgradeModule` to the `app/app.module.ts`
+3. Removed `ng-app` HTML attribute from the `index.html` file's `<html>` tag
+
