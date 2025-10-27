@@ -7,3 +7,4 @@ tmp
 .vscode
 angular-phonecat-snapshots
 bower_components/
+app/**/*.js
