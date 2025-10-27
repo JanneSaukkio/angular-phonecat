@@ -141,3 +141,16 @@ find `/app` or `/app/index.js` file.
 4. Modified components to use updated service together with RxJS and updated typings
 5. Removed reference to the service file from the `index.html` file
 
+### Step 6 - Upgrading Components
+
+1. Imported `FormsModule` to the `app/app.module.ts`
+2. Upgraded checkmark filter to pipe
+3. Upgraded phone detail and list components to Angular
+4. Added `app/ajs-upgraded-providers.ts` file and added it to the `app/app.module.ts`'s providers list
+5. Removed reference to filter and component files from the `index.html` file
+
+Note: minor difference between upgraded application and the guide; `templateUrl`s need to have full
+path to the template file. So instead of path being `./phone-list.template.html`, it needs to be
+`./phone-list/phone-list.template.html`. Without this change application will fail to initialize and
+print out "http://localhost:8000/app/phone-list.template.html 404 Not Found" errors.
+
