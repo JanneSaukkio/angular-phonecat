@@ -2,7 +2,7 @@ declare var angular: angular.IAngularStatic;
 import { downgradeComponent } from '@angular/upgrade/static';
 import { Component } from '@angular/core';
 import { Phone, PhoneData } from '../core/phone/phone.service';
-import { RouteParams } from '../ajs-upgraded-providers';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'phone-detail',
@@ -12,8 +12,8 @@ export class PhoneDetailComponent {
   phone: PhoneData;
   mainImageUrl: string;
 
-  constructor($routeParams: RouteParams, phone: Phone) {
-    let phoneId = $routeParams['phoneId'];
+  constructor(activatedRoute: ActivatedRoute, phone: Phone) {
+    let phoneId = activatedRoute.snapshot.paramMap.get('phoneId');
     phone.get(phoneId).subscribe((data) => {
       this.phone = data;
       this.setImage(data.images[0]);

@@ -158,3 +158,11 @@ print out "http://localhost:8000/app/phone-list.template.html 404 Not Found" err
 
 Nothing to do here. We don't use AOT.
 
+### Step 8 - Adding The Angular Router And Bootstrap
+
+1. Created `app/app.component.ts` that will be the main/wrapper component for the application
+2. Declared the `AppComponent` as bootstrap component in the `app/app.module.ts`
+3. Replaced `<body>` contents with `<phonecat-app></phonecat-app>`
+4. Added `app/app-routing.module.ts` that will provide Angular's `RouterModule` for the application
+5. Imported `AppRoutingModule` to the `app/app.module.ts`
+
