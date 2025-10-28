@@ -154,3 +154,7 @@ path to the template file. So instead of path being `./phone-list.template.html`
 `./phone-list/phone-list.template.html`. Without this change application will fail to initialize and
 print out "http://localhost:8000/app/phone-list.template.html 404 Not Found" errors.
 
+### Step 7 - AOT compile the hybrid app
+
+Nothing to do here. We don't use AOT.
+
