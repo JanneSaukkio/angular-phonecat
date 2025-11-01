@@ -166,3 +166,29 @@ Nothing to do here. We don't use AOT.
 4. Added `app/app-routing.module.ts` that will provide Angular's `RouterModule` for the application
 5. Imported `AppRoutingModule` to the `app/app.module.ts`
 
+### Step 9 - The Return of the Modules
+
+**This step doesn't exist in the official Upgrade Guide!** Why? Most likely to make the Phonecat application simpler by
+having less modules to import to other modules. The official guide moves all declarations and imports to the
+`app.module.ts` which is fine for small applications. For medium and large applications it's better to have components
+and such separated into own modules which are imported to the `app.module.ts` for scalability and isolation reasons.
+
+This step upgrades AngularJS modules defined with `angular.module` method to Angular modules with `@NgModule` decorator
+and moves component and pipe declarations back to their own *feature* modules. `Phone` service provider declaration is
+also moved to it's own module. This is partial reversion of steps #5 and #6. All components and pipes that needs to be
+available outside of their respective module need to be exported in the `exports` array of the module.
+
+Imports of built-in modules such as `HttpModule` and `FormsModule` need to be moved to the feature modules because
+components and services declared in these modules depend on directives and services exported by these modules. Same
+thing also applies to application's own modules such as `CoreModule` that exports `CheckmarkPipe` used by
+`PhoneDetailComponent`.
+
+1. Converted `angular.module` declarations to classes with `@NgModule` decorator
+2. Moved module imports and component declarations from `app.module.ts` back to own modules
+  - Note that `entryComponents` declarations can be dropped at this point because the AngularJS code is about to be
+    removed
+3. Added `CommonModule` imports to feature modules. This module exports Angular's built-in directives such as `*ngFor`
+  and `*ngIf`
+4. Removed `angular.module` calls from component and service files
+5. Removed references to AngularJS modules from `app.module.ajs.ts`
+

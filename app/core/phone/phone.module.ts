@@ -1,4 +1,9 @@
-'use strict';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { Phone } from './phone.service';
 
-// Define the `core.phone` module
-angular.module('core.phone', ['ngResource']);
+@NgModule({
+	imports: [HttpModule],
+	providers: [Phone],
+})
+export class PhoneModule {}

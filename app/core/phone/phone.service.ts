@@ -3,9 +3,6 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-declare var angular: angular.IAngularStatic;
-import { downgradeInjectable } from '@angular/upgrade/static';
-
 export interface PhoneData {
   name: string;
   snippet: string;
@@ -26,6 +23,3 @@ export class Phone {
     );
   }
 }
-
-angular.module('core.phone')
-  .factory('phone', downgradeInjectable(Phone));
