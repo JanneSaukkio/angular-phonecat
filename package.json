@@ -15,6 +15,7 @@
     "@angular/platform-browser-dynamic": "6.1.10",
     "@angular/router": "6.1.10",
     "angular-in-memory-web-api": "0.6.1",
+    "bootstrap": "3.1.1",
     "core-js": "2.6.12",
     "rxjs": "6.6.7",
     "systemjs": "0.19.40",
@@ -22,7 +23,6 @@
   },
   "devDependencies": {
     "@types/jasmine": "^5.1.12",
-    "bower": "^1.7.7",
     "http-server": "^0.9.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
@@ -35,7 +35,6 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "postinstall": "bower install",
     "prestart": "npm install",
     "start": "http-server ./ -a localhost -p 8000 -c-1",
     "pretest": "npm install",
@@ -44,7 +43,6 @@
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor e2e-tests/protractor.conf.js",
-    "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+    "protractor": "protractor e2e-tests/protractor.conf.js"
   }
 }

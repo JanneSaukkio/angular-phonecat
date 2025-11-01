@@ -203,3 +203,12 @@ thing also applies to application's own modules such as `CoreModule` that export
 
 **Note:** the official Upgrade Guide removes AngularJS modules here, but since those were upgraded to Angular modules
 in the last step, nothing needs to be removed.
+
+### Step 11 - Remove Bower
+
+This step is not part of the official Upgrade Guide. Just a nice cleanup to remove Bower and replace
+remaining usages of it with NPM.
+
+1. Installed `bootstrap` NPM packaget
+2. Removed `.bowerrc` and `bower.json` files
+3. Updated reference to `bootstrap` styles to use `node_modules/` folder instead `bower_components/`
