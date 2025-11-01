@@ -192,3 +192,14 @@ thing also applies to application's own modules such as `CoreModule` that export
 4. Removed `angular.module` calls from component and service files
 5. Removed references to AngularJS modules from `app.module.ajs.ts`
 
+### Step 10 - Say Goodbye to AngularJS
+
+1. Removed `@types/angular-*` and `@angular/upgrade` NPM packages
+2. Removed `UpgradeModule` import from the `app/app.module.ts` and other references to
+  `@angular/upgrade` package
+3. Removed `app/app.module.ajs.ts` and `app/ajs-upgraded-providers.ts` files
+4. Removed references to `angular*` (JS) and `jquery` packages from `index.html`
+5. Removed `@angular/upgrade/static` mapping from the `systemjs.config.js`
+
+**Note:** the official Upgrade Guide removes AngularJS modules here, but since those were upgraded to Angular modules
+in the last step, nothing needs to be removed.
