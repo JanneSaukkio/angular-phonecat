@@ -1,15 +1,38 @@
-'use strict';
+interface PhoneData {
+  name: string;
+  snippet: string;
+  images: string[];
+}
+
+class Phone {
+  static $inject = ['$http'];
+  constructor(private $http: ng.IHttpService) {}
+
+  get(params?: any, success?: Function, error?: Function) {
+    return this.$http.get<PhoneData>(`phones/${params.phoneId}.json`)
+      .then(({ data }) => {
+        if (success) success(data);
+        return data;
+      })
+      .catch((err) => {
+        if (error) error(err);
+        throw err;
+      });
+  }
+
+  query(params?: Object, success?: Function, error?: Function) {
+    return this.$http.get<PhoneData[]>('phones/phones.json')
+      .then(({ data }) => {
+        if (success) success(data);
+        return data;
+      })
+      .catch((err) => {
+        if (error) error(err);
+        throw err;
+      });
+  }
+}
 
 angular.
   module('core.phone').
-  factory('Phone', ['$resource',
-    function($resource: angular.resource.IResourceService) {
-      return $resource('phones/:phoneId.json', {}, {
-        query: {
-          method: 'GET',
-          params: {phoneId: 'phones'},
-          isArray: true
-        }
-      });
-    }
-  ]);
+  service('Phone', Phone);
