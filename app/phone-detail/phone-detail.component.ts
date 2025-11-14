@@ -6,7 +6,7 @@ angular.
   component('phoneDetail', {
     templateUrl: 'phone-detail/phone-detail.template.html',
     controller: ['$routeParams', 'Phone',
-      function PhoneDetailController($routeParams, Phone) {
+      function PhoneDetailController($routeParams: angular.route.IRouteParamsService, Phone) {
         var self = this;
         self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
           self.setImage(phone.images[0]);
