@@ -1,10 +1,14 @@
-interface PhoneData {
+import { IAngularStatic } from 'angular';
+
+declare var angular: IAngularStatic;
+
+export interface PhoneData {
   name: string;
   snippet: string;
   images: string[];
 }
 
-class Phone {
+export class Phone {
   static $inject = ['$http'];
   constructor(private $http: ng.IHttpService) {}
 

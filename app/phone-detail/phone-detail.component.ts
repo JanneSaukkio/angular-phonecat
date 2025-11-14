@@ -1,7 +1,10 @@
-'use strict';
+import { IAngularStatic, IComponentOptions, IComponentController, IControllerConstructor, route } from 'angular';
+import { Phone, PhoneData } from '../core/phone/phone.service';
 
-class PhoneDetailComponent implements angular.IComponentOptions {
-  controller: angular.IControllerConstructor;
+declare var angular: IAngularStatic;
+
+class PhoneDetailComponent implements IComponentOptions {
+  controller: IControllerConstructor;
   templateUrl = 'phone-detail/phone-detail.template.html';
 
   constructor() {
@@ -9,12 +12,12 @@ class PhoneDetailComponent implements angular.IComponentOptions {
   }
 }
 
-class PhoneDetailController implements angular.IComponentController {
-  phone: any;
+class PhoneDetailController implements IComponentController {
+  phone: PhoneData;
   mainImageUrl: string;
 
   static $inject = ['$routeParams', 'Phone'];
-  constructor(private $routeParams: angular.route.IRouteParamsService, private Phone: any) {
+  constructor(private $routeParams: route.IRouteParamsService, private Phone: Phone) {
     "ngInject";
   }
 

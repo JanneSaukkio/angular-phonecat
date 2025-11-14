@@ -1,4 +1,4 @@
-'use strict';
+var exports = {};
 
 // Define the `phonecatApp` module
 angular.module('phonecatApp', [

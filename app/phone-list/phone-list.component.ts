@@ -1,20 +1,23 @@
-'use strict';
+import { IAngularStatic, IComponentOptions, IComponentController, IControllerConstructor } from 'angular';
+import { Phone, PhoneData } from '../core/phone/phone.service';
 
-class PhoneListComponent implements angular.IComponentOptions {
-  controller: angular.IControllerConstructor;
+declare var angular: IAngularStatic;
+
+class PhoneListComponent implements IComponentOptions {
+  controller: IControllerConstructor;
   templateUrl = 'phone-list/phone-list.template.html';
 
   constructor() {
-      this.controller = PhoneListController;
+    this.controller = PhoneListController;
   }
 }
 
-class PhoneListController implements angular.IComponentController {
-  phones: any[] = [];
+class PhoneListController implements IComponentController {
+  phones: PhoneData[] = [];
   orderProp: string;
 
   static $inject = ['Phone'];
-  constructor(private Phone: any) {
+  constructor(private Phone: Phone) {
     "ngInject";
   }
 
