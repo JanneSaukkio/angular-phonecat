@@ -1,14 +1,15 @@
-import { IAngularStatic, IComponentOptions, IComponentController, IControllerConstructor } from 'angular';
+import { IComponentOptions, IComponentController, IControllerConstructor } from 'angular';
 import { Phone, PhoneData } from '../core/phone/phone.service';
 
-declare var angular: IAngularStatic;
+import * as template from './phone-list.template.html';
 
-class PhoneListComponent implements IComponentOptions {
+export class PhoneListComponent implements IComponentOptions {
   controller: IControllerConstructor;
-  templateUrl = 'phone-list/phone-list.template.html';
+  template: string;
 
   constructor() {
     this.controller = PhoneListController;
+    this.template = String(template);
   }
 }
 
@@ -28,8 +29,3 @@ class PhoneListController implements IComponentController {
     this.orderProp = 'age';
   }
 }
-
-// Register `phoneList` component, along with its associated controller and template
-angular.
-  module('phoneList').
-  component('phoneList', new PhoneListComponent());

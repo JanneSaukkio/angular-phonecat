@@ -1,7 +1,3 @@
-import { IAngularStatic } from 'angular';
-
-declare var angular: IAngularStatic;
-
 export interface PhoneData {
   name: string;
   snippet: string;
@@ -36,7 +32,3 @@ export class Phone {
       });
   }
 }
-
-angular.
-  module('core.phone').
-  service('Phone', Phone);

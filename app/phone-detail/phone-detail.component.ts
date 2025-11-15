@@ -1,14 +1,15 @@
-import { IAngularStatic, IComponentOptions, IComponentController, IControllerConstructor, route } from 'angular';
+import { IComponentOptions, IComponentController, IControllerConstructor, route } from 'angular';
 import { Phone, PhoneData } from '../core/phone/phone.service';
 
-declare var angular: IAngularStatic;
+import * as template from './phone-detail.template.html';
 
-class PhoneDetailComponent implements IComponentOptions {
+export class PhoneDetailComponent implements IComponentOptions {
   controller: IControllerConstructor;
-  templateUrl = 'phone-detail/phone-detail.template.html';
+  template: string;
 
   constructor() {
-      this.controller = PhoneDetailController;
+    this.controller = PhoneDetailController;
+    this.template = String(template);
   }
 }
 
@@ -32,8 +33,3 @@ class PhoneDetailController implements IComponentController {
     this.mainImageUrl = imageUrl;
   }
 }
-
-// Register `phoneDetail` component, along with its associated controller and template
-angular.
-  module('phoneDetail').
-  component('phoneDetail', new PhoneDetailComponent());

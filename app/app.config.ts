@@ -1,20 +1,15 @@
-import { IAngularStatic, ILocationProvider, route } from 'angular';
+import { ILocationProvider, route } from 'angular';
 
-declare var angular: IAngularStatic;
+export function config($locationProvider: ILocationProvider, $routeProvider: route.IRouteProvider) {
+  "ngInject";
+  $locationProvider.hashPrefix('!');
 
-angular.
-  module('phonecatApp').
-  config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider: ILocationProvider, $routeProvider: route.IRouteProvider) {
-      $locationProvider.hashPrefix('!');
-
-      $routeProvider.
-        when('/phones', {
-          template: '<phone-list></phone-list>'
-        }).
-        when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
-        }).
-        otherwise('/phones');
-    }
-  ]);
+  $routeProvider.
+    when('/phones', {
+      template: '<phone-list></phone-list>'
+    }).
+    when('/phones/:phoneId', {
+      template: '<phone-detail></phone-detail>'
+    }).
+    otherwise('/phones');
+}
