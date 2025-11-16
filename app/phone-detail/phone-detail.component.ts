@@ -1,29 +1,21 @@
-import { IComponentOptions, IComponentController, IControllerConstructor, route } from 'angular';
-import { Phone, PhoneData } from '../core/phone/phone.service';
+import { Component, OnInit } from "@angular/core";
+import { Phone, PhoneData } from "../core/phone/phone.service";
+import { ActivatedRoute } from "@angular/router";
 
-import * as template from './phone-detail.template.html';
-
-export class PhoneDetailComponent implements IComponentOptions {
-  controller: IControllerConstructor;
-  template: string;
-
-  constructor() {
-    this.controller = PhoneDetailController;
-    this.template = String(template);
-  }
-}
-
-export class PhoneDetailController implements IComponentController {
+@Component({
+  selector: "phone-detail",
+  templateUrl: "./phone-detail.template.html",
+})
+export class PhoneDetailComponent implements OnInit {
   phone: PhoneData;
   mainImageUrl: string;
 
-  static $inject = ['$routeParams', 'Phone'];
-  constructor(private $routeParams: route.IRouteParamsService, private Phone: Phone) {
+  constructor(private Phone: Phone) {
     "ngInject";
   }
 
-  $onInit(): void {
-    this.Phone.get({phoneId: this.$routeParams.phoneId}, (phone) => {
+  public ngOnInit(): void {
+    this.Phone.get({ phoneId: this.$routeParams.phoneId }, (phone) => {
       this.phone = phone;
       this.setImage(phone.images[0]);
     });

@@ -1,16 +1,19 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+
 export interface PhoneData {
   name: string;
   snippet: string;
   images: string[];
 }
 
+@Injectable()
 export class Phone {
-  static $inject = ['$http'];
-  constructor(private $http: ng.IHttpService) {}
-
+  constructor(private $http: HttpClient) {}
   get(params?: any, success?: Function, error?: Function) {
-    return this.$http.get<PhoneData>(`phones/${params.phoneId}.json`)
-      .then(({ data }) => {
+    return this.$http
+      .get<PhoneData>(`phones/${params.phoneId}.json`)
+      .then((data) => {
         if (success) success(data);
         return data;
       })
@@ -21,8 +24,9 @@ export class Phone {
   }
 
   query(params?: Object, success?: Function, error?: Function) {
-    return this.$http.get<PhoneData[]>('phones/phones.json')
-      .then(({ data }) => {
+    return this.$http
+      .get<PhoneData[]>("phones/phones.json")
+      .then((data) => {
         if (success) success(data);
         return data;
       })
