@@ -4,18 +4,17 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "phone-detail",
-  templateUrl: "./phone-detail.template.html",
+  templateUrl: "./phone-detail/phone-detail.template.html",
 })
 export class PhoneDetailComponent implements OnInit {
   phone: PhoneData;
   mainImageUrl: string;
 
-  constructor(private Phone: Phone) {
-    "ngInject";
-  }
+  constructor(private Phone: Phone, private activatedRoute: ActivatedRoute) {}
 
   public ngOnInit(): void {
-    this.Phone.get({ phoneId: this.$routeParams.phoneId }, (phone) => {
+    const phoneId = this.activatedRoute.snapshot.paramMap.get('phoneId');
+    this.Phone.get({ phoneId: phoneId }, (phone) => {
       this.phone = phone;
       this.setImage(phone.images[0]);
     });

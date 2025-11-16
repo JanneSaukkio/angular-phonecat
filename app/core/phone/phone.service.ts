@@ -13,6 +13,7 @@ export class Phone {
   get(params?: any, success?: Function, error?: Function) {
     return this.$http
       .get<PhoneData>(`phones/${params.phoneId}.json`)
+      .toPromise()
       .then((data) => {
         if (success) success(data);
         return data;
@@ -26,6 +27,7 @@ export class Phone {
   query(params?: Object, success?: Function, error?: Function) {
     return this.$http
       .get<PhoneData[]>("phones/phones.json")
+      .toPromise()
       .then((data) => {
         if (success) success(data);
         return data;
