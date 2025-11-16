@@ -1,6 +1,14 @@
-import * as angular from 'angular';
+import { NgModule } from '@angular/core';
 import { PhoneListComponent } from './phone-list.component';
+import { CoreModule } from '../core/core.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-// Define the `phoneList` module
-angular.module('phoneList', ['core'])
-    .component('phoneList', new PhoneListComponent);
+@NgModule({
+  imports: [CoreModule, CommonModule, RouterModule, FormsModule],
+  declarations: [PhoneListComponent],
+  exports: [PhoneListComponent],
+})
+export class PhoneListModule {}
+

@@ -1,8 +1,11 @@
-import * as angular from 'angular';
 import { PhoneDetailComponent } from './phone-detail.component';
+import { NgModule } from '@angular/core';
+import { CoreModule } from '../core/core.module';
+import { CommonModule } from '@angular/common';
 
-// Define the `phoneDetail` module
-angular.module('phoneDetail', [
-  'ngRoute',
-  'core'
-]).component('phoneDetail', new PhoneDetailComponent);
+@NgModule({
+  imports: [CoreModule, CommonModule],
+  declarations: [PhoneDetailComponent],
+  exports: [PhoneDetailComponent],
+})
+export class PhoneDetailModule {}

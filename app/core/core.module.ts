@@ -1,7 +1,10 @@
-import * as angular from 'angular';
-import { checkmarkFilter } from './checkmark/checkmark.filter';
-import './phone/phone.module';
+import { NgModule } from '@angular/core';
+import { PhoneModule } from './phone/phone.module';
+import { CheckmarkPipe } from './checkmark/checkmark.filter';
 
-// Define the `core` module
-angular.module('core', ['core.phone'])
-  .filter('checkmark', checkmarkFilter);
+@NgModule({
+  imports: [PhoneModule],
+  declarations: [CheckmarkPipe],
+  exports: [CheckmarkPipe],
+})
+export class CoreModule {}

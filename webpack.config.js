@@ -18,7 +18,7 @@ module.exports = (function makeWebpackConfig() {
     var config = {};
 
     config.entry = {
-        'app': './app/app.module.ts',
+        'app': './app/main.ts',
         'vendor': './app/vendor.ts',
     };
 

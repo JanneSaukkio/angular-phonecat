@@ -1,6 +1,9 @@
-import * as angular from 'angular';
 import { Phone } from './phone.service';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-// Define the `core.phone` module
-angular.module('core.phone', [])
-  .service('Phone', Phone);
+@NgModule({
+  imports: [HttpClientModule],
+  providers: [Phone],
+})
+export class PhoneModule {}

@@ -1,3 +1,2 @@
-import 'angular';
-import 'angular-animate';
-import 'angular-route';
+import 'core-js/client/shim.min.js';
+import 'zone.js/dist/zone.js';
