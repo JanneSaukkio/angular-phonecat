@@ -5,27 +5,37 @@ module.exports = function(config) {
     basePath: './app',
 
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      '**/*.module.js',
-      '*!(.module|.spec).js',
-      '!(bower_components)/**/*!(.module|.spec).js',
-      '**/*.spec.js'
+      '../node_modules/angular/angular.js',
+      '../node_modules/angular-animate/angular-animate.js',
+      '../node_modules/angular-route/angular-route.js',
+      '../node_modules/angular-mocks/angular-mocks.js',
+      '**/*.module.ts',
+      '*!(.module|.spec).ts',
+      '!(node_modules)/**/*!(.module|.spec).ts',
+      '**/*.ts'
     ],
+
+    preprocessors: {
+      '**/*.ts': ['karma-typescript']
+    },
 
     autoWatch: true,
 
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'karma-typescript'],
+
+    reporters: ['dots', 'karma-typescript'],
+
+    karmaTypescriptConfig: {
+      tsconfig: '../tsconfig.json'
+    },
 
     browsers: ['Chrome', 'Firefox'],
 
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-typescript'
     ]
 
   });

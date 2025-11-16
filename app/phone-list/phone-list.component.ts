@@ -13,7 +13,7 @@ export class PhoneListComponent implements IComponentOptions {
   }
 }
 
-class PhoneListController implements IComponentController {
+export class PhoneListController implements IComponentController {
   phones: PhoneData[] = [];
   orderProp: string;
 

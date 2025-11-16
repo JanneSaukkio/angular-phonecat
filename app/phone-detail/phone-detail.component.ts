@@ -13,7 +13,7 @@ export class PhoneDetailComponent implements IComponentOptions {
   }
 }
 
-class PhoneDetailController implements IComponentController {
+export class PhoneDetailController implements IComponentController {
   phone: PhoneData;
   mainImageUrl: string;
 

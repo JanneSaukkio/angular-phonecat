@@ -1,8 +1,10 @@
-'use strict';
+import 'angular-mocks';
+import angular, { IHttpBackendService } from 'angular';
+import { Phone, PhoneData } from './phone.service';
 
 describe('Phone', function() {
-  var $httpBackend;
-  var Phone;
+  var $httpBackend: IHttpBackendService;
+  var Phone: Phone;
   var phonesData = [
     {name: 'Phone X'},
     {name: 'Phone Y'},
@@ -15,10 +17,10 @@ describe('Phone', function() {
   });
 
   // Load the module that contains the `Phone` service before each test
-  beforeEach(module('core.phone'));
+  beforeEach(angular.mock.module('core.phone'));
 
   // Instantiate the service and "train" `$httpBackend` before each test
-  beforeEach(inject(function(_$httpBackend_, _Phone_) {
+  beforeEach(inject(function(_$httpBackend_: IHttpBackendService, _Phone_: Phone) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('phones/phones.json').respond(phonesData);
 
@@ -31,13 +33,13 @@ describe('Phone', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should fetch the phones data from `/phones/phones.json`', function() {
-    var phones = Phone.query();
+  it('should fetch the phones data from `/phones/phones.json`', async function() {
+    var phones = await Phone.query();
 
     expect(phones).toEqual([]);
 
     $httpBackend.flush();
-    expect(phones).toEqual(phonesData);
+    expect(phones).toEqual(phonesData as PhoneData[]);
   });
 
 });
